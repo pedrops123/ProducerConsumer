@@ -1,7 +1,6 @@
 ﻿using RabbitMQ.Client;
 using System;
 using System.Text;
-using System.Threading;
 
 namespace Producer
 {
@@ -40,6 +39,8 @@ namespace Producer
                     routingKey: "fila_teste",
                     basicProperties: null,  
                     body: parsedBody);
+
+                // TODO : Revisar o porque o channel não aguarda a confirmação para validação.
 
                 channel.WaitForConfirmsOrDie(new TimeSpan(0, 0, 1, 50));
 
